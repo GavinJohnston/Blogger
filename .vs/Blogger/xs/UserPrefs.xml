@@ -1,14 +1,36 @@
 ﻿<Properties StartupConfiguration="{9A5D697A-913C-4E24-9373-9E499044A24C}|Default">
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Blogger PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Blogger/wwwroot/css/Admin.css">
+    <Files>
+      <File FileName="Blogger/Views/Home/Admin.cshtml" Line="11" Column="1" />
+      <File FileName="Blogger/wwwroot/js/Admin.js" Line="326" Column="38" />
+      <File FileName="Blogger/Controllers/HomeController.cs" Line="202" Column="28" />
+      <File FileName="Blogger/wwwroot/css/Admin.css" Line="269" Column="22" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Blogger" expanded="True" selected="True">
-            <Node name="Blogger" expanded="True" />
+          <Node name="Blogger" expanded="True">
+            <Node name="Blogger" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
+                <Node name="Shared" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+                <Node name="js" expanded="True" />
+              </Node>
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
@@ -17,7 +39,4 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Blogger PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

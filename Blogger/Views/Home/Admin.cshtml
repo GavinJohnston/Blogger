@@ -1,0 +1,135 @@
+﻿@{
+    ViewData["Title"] = "Admin";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Admin.css" asp-append-version="true" />
+</head>
+
+<div id="viewerModalBack" onclick="closeModals()">
+
+</div>
+
+<div id="viewerModal">
+    <div id="modalContentTitle"></div>
+    <textarea id="modalContentArea"></textarea>
+    <div id="modalContentEdit" onclick="editPost()">Edit Post</div>
+</div>
+
+<div id="content">
+    <header id="header">
+        <div id="header_main">
+            <div id="header_main-header" class="header_text">Admin Panel</div>
+        </div>
+    </header>
+    <div id="contentPanel">
+        <div id="BlogInfo" class="panelSection">
+            <h2 class="sectionHeader">Blog Information</h2>
+            <form id="titlesForm" class="sectionContent" onsubmit="return false;" autocomplete="off">
+                <div class="inputArea">
+                    <h2 class="inputName">Main Header:</h2>
+                    <input type="text" class="inputBox" placeholder="Header Name" name="headerName" />
+                    <input type="submit" id="submitAllInfo" value="Submit All" class="submit" onclick="updateBlogTitle()" />
+                </div>
+                <div class="inputArea">
+                    <h2 class="inputName">Sub Header:</h2>
+                    <input type="text" class="inputBox" placeholder="Sub name" name="subHeaderName" />
+                </div>
+                <div class="inputArea">
+                    <h2 class="inputName">Title:</h2>
+                    <input type="text" class="inputBox" placeholder="Blog Title" name="titleName" />
+                </div>
+            </form>
+        </div>
+        <div id="CategoriesManager" class="panelSection">
+            <h2 class="sectionHeader">Manage Categories</h2>
+            <div class="sectionContent">
+                <div class="inputArea">
+                    <h2 class="inputName">Add Category:</h2>
+                    <input type="text" class="inputBox" placeholder="Category Name" id="addCat" />
+                    <div id="addCatSubmit" class="submit" onclick="createCategory()">Add</div>
+                </div>
+                <div class="inputArea">
+                    <h2 class="inputName">Remove Category:</h2>
+                    <select id="binCatList"
+                            name="catList"
+                            class="inputBox catLists"
+                            placeholder="Categories"></select>
+                    <div id="hideCatSubmit" class="submit" onclick="binCategory()">Bin</div>
+                </div>
+                <div class="inputArea">
+                    <h2 class="inputName">Bin:</h2>
+                    <select id="catListBinned"
+                            name="catList"
+                            class="inputBox"
+                            placeholder="Categories"></select>
+                    <div id="btnManager">
+                        <div id="recoverCatSubmit" class="submit" onclick="recoverCategory()">Recover</div>
+                        <div id="removeCatSubmit" class="submit" onclick="deleteCategory()">Delete</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="CreatePost" class="panelSection">
+            <h2 class="sectionHeader">Create Post</h2>
+            <form class="sectionContent" id="postContent" onsubmit="return false;" autocomplete="off">
+                <div class="postInfo">
+                    <div class="inputAreaPost">
+                        <h2 class="inputName">Post Title:</h2>
+                        <input type="text" class="inputBox" name="postTitle" placeholder="Post Title" />
+                    </div>
+                    <div class="inputAreaPost">
+                        <h2 class="inputName">Select Category:</h2>
+                        <select id="catList"
+                                name="catList"
+                                class="inputBox catLists"
+                                placeholder="Categories"></select>
+                        <button id="submitPost" class="submit" onclick="generatePost()">Submit Post</button>
+                    </div>
+                </div>
+                <div id="postBox">
+                    <div id="formatter">
+                        <h3>Format text:</h3>
+                        <h4 id="formatHeader" class="formatBtn">Header</h4>
+                        <h4 id="formatBold" class="formatBtn">Bold</h4>
+                        <h4 id="formatItalic" class="formatBtn">Italic</h4>
+                    </div>
+                    <textarea id="createPost"
+                              placeholder="Share Your Thoughts.."
+                              name="postContent">
+                    </textarea>
+                </div>
+            </form>
+        </div>
+        <div id="CategoriesManager" class="panelSection">
+            <h2 class="sectionHeader">Manage Posts</h2>
+        </div>
+        <div class="sectionContent" id="managePostContent">
+            <div class="postInfo">
+                <h2 class="inputName">Select Category:</h2>
+                <select id="catListPosts"
+                        name="catList"
+                        class="inputBox catLists"
+                        placeholder="Categories"
+                        onchange="viewPosts()"></select>
+            </div>
+            <div id="listPosts">
+                <h2 class="inputName">Posts:</h2>
+                <div id="postContainer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div id="contentPanel_Menu">
+          <div class="menu_item">Blog Information</div>
+          <div class="menu_item">Categories</div>
+          <div class="menu_item">Create Post</div>
+          <div class="menu_item">Manage Posts</div>
+          <div class="menu_item">Colour Palette</div>
+        </div>
+        <div id="contentPanel_Data">a</div> -->
+
+
+
+
+<script src="~/js/Admin.js" asp-append-version="true"></script>

@@ -1,0 +1,270 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: ivory;
+    flex-direction: column;
+}
+
+#content {
+    width: 65vw;
+}
+
+#header {
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#header_main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+#header-text {
+    color: rgb(11, 7, 7);
+    text-transform: uppercase;
+    height: 10vh;
+}
+
+.header_text {
+    text-transform: uppercase;
+    padding: 5px;
+    font-size: 2em;
+    cursor: default;
+    letter-spacing: 1px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/** Main Header **/
+
+.panelSection {
+    width: 100%;
+}
+
+.sectionHeader {
+    color: ivory;
+    background-color: rgb(11, 7, 7);
+    padding: 10px;
+    display: block;
+}
+
+.sectionContent {
+    width: 100%;
+    display: flex;
+    margin: 20px 0;
+}
+
+.inputArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    margin-right: 3%;
+}
+
+.inputName {
+    align-self: flex-start;
+}
+
+.inputBox {
+    border: 2px solid rgb(11, 7, 7);
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(11, 7, 7);
+    padding: 10px;
+    text-transform: uppercase;
+    width: 100%;
+    margin: 2% 0;
+}
+
+.submit {
+    color: ivory;
+    background-color: rgb(11, 7, 7);
+    font-size: 1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 5px;
+    align-self: flex-start;
+    border: 0;
+}
+
+/** post section **/
+
+#postContent {
+    display: flex;
+    flex-direction: row;
+}
+
+.postInfo {
+    width: 30%;
+    max-width: 30%;
+    min-width: 30%;
+}
+
+.inputAreaPost {
+    display: flex;
+    flex-direction: column;
+}
+
+#postBox {
+    width: 70%;
+    margin-left: 3%;
+}
+
+#formatter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.formatBtn {
+    background-color: rgb(11, 7, 7);
+    color: ivory;
+    padding: 2px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+#createPost {
+    border: 2px solid rgb(11, 7, 7);
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: 300px;
+    background-color: rgba(255, 255, 240, 0);
+    padding: 10px;
+}
+
+textarea {
+    font-size: 20px;
+}
+
+/** Manage Posts **/
+
+#listPosts {
+    width: 100%;
+    margin-left: 3%;
+}
+
+#postContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#btnManager {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+}
+
+    #btnManager > * {
+        margin-right: 5px;
+    }
+
+
+/* Item Boxes */
+
+.itemBox {
+    background-color: rgb(11, 7, 7);
+    margin: 5px;
+    width: 200px;
+    text-align: center;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.itemBoxTitle {
+    color: ivory;
+    text-transform: uppercase;
+    margin: 5px;
+}
+
+.itemBoxContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.itemBoxView,
+.itemBoxDelete {
+    color: ivory;
+    border: 1px solid ivory;
+    width: 40%;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#viewerModalBack {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+}
+
+#viewerModal {
+    width: 50%;
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    z-index: 2;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.196);
+    padding: 20px;
+    display: none;
+}
+
+#modalContentTitle {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+#modalContentArea {
+    height: 100%;
+    width: 100%;
+    border: 0;
+    cursor: default;
+    height: auto;
+    min-height: 400px;
+}
+
+#modalContentEdit {
+    background-color: rgb(11, 7, 7);
+    cursor: pointer;
+    padding: 5px;
+    color: ivory;
+    display: inline-block;
+    margin-top: 10px;
+}

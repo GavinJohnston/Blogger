@@ -1,4 +1,12 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using Blogger.Models;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers().AddNewtonsoftJson();
+builder.Services.AddDbContext<BloggerContext>(options => {
+    options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection"));
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
