@@ -10,15 +10,20 @@
 </div>
 
 <div id="viewerModal">
-    <div id="modalContentTitle"></div>
+    <div id="modaltitles">
+        <div id="modalContentTitle"></div>
+        <div id="editMode">EDIT MODE</div>
+    </div>
     <textarea id="modalContentArea"></textarea>
     <div id="modalContentEdit" onclick="editPost()">Edit Post</div>
+    <div id="modalContentSave">Save Post</div>
 </div>
 
 <div id="content">
     <header id="header">
         <div id="header_main">
             <div id="header_main-header" class="header_text">Admin Panel</div>
+            <a href="/" id="login_btn">Home</a>
         </div>
     </header>
     <div id="contentPanel">
@@ -27,16 +32,18 @@
             <form id="titlesForm" class="sectionContent" onsubmit="return false;" autocomplete="off">
                 <div class="inputArea">
                     <h2 class="inputName">Main Header:</h2>
-                    <input type="text" class="inputBox" placeholder="Header Name" name="headerName" />
+                    <input type="text" class="inputBox" placeholder="Header Name" id="headerName" name="headerName" />
                     <input type="submit" id="submitAllInfo" value="Submit All" class="submit" onclick="updateBlogTitle()" />
                 </div>
                 <div class="inputArea">
                     <h2 class="inputName">Sub Header:</h2>
-                    <input type="text" class="inputBox" placeholder="Sub name" name="subHeaderName" />
+                    <input type="text" class="inputBox" placeholder="Sub name" id="subHeaderName" name="subHeaderName" />
                 </div>
                 <div class="inputArea">
-                    <h2 class="inputName">Title:</h2>
-                    <input type="text" class="inputBox" placeholder="Blog Title" name="titleName" />
+                    <h2 class="inputName">Text Colour:</h2>
+                    
+                        <input type="color" class="colorPicker" id="colorPickerMain" name="colorPickerMain">
+                    
                 </div>
             </form>
         </div>
@@ -45,7 +52,10 @@
             <div class="sectionContent">
                 <div class="inputArea">
                     <h2 class="inputName">Add Category:</h2>
-                    <input type="text" class="inputBox" placeholder="Category Name" id="addCat" />
+                    <div id="submitArea">
+                        <input type="text" class="inputBox" placeholder="Category Name" id="addCat" />
+                        <input type="color" id="colorPickerCat" class="colorPicker">
+                    </div>
                     <div id="addCatSubmit" class="submit" onclick="createCategory()">Add</div>
                 </div>
                 <div class="inputArea">
@@ -75,7 +85,7 @@
                 <div class="postInfo">
                     <div class="inputAreaPost">
                         <h2 class="inputName">Post Title:</h2>
-                        <input type="text" class="inputBox" name="postTitle" placeholder="Post Title" />
+                        <input type="text" class="inputBox" name="postTitle" id="postTitle" placeholder="Post Title" />
                     </div>
                     <div class="inputAreaPost">
                         <h2 class="inputName">Select Category:</h2>
@@ -108,9 +118,11 @@
                 <h2 class="inputName">Select Category:</h2>
                 <select id="catListPosts"
                         name="catList"
-                        class="inputBox catLists"
+                        class="inputBox"
                         placeholder="Categories"
-                        onchange="viewPosts()"></select>
+                        onchange="viewPosts()">
+                    <option value="All">All</option>
+                </select>
             </div>
             <div id="listPosts">
                 <h2 class="inputName">Posts:</h2>

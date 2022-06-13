@@ -39,12 +39,18 @@ public class HomeController : Controller
     {
         var items = await _context.TitleInfo.ToListAsync();
 
-        if (items == null)
-        {
-            return NotFound();
-        }
-
         return items;
+    }
+
+    [HttpPost]
+    [Route("Info")]
+    public async Task<ActionResult<TitleInfo>> postInfo(TitleInfo titleinfo)
+    {
+        _context.TitleInfo.Add(titleinfo);
+
+        await _context.SaveChangesAsync();
+
+        return Ok(titleinfo);
     }
 
     [HttpGet]
@@ -200,6 +206,37 @@ public class HomeController : Controller
         await _context.SaveChangesAsync();
 
         return NoContent();
+    }
+
+    [HttpPut]
+    [Route("posts/{id}")]
+    public async Task<ActionResult> putPost(int id, Post post)
+    {
+        if (id != post.Id)
+        {
+            return BadRequest();
+        }
+
+        _context.Entry(post).State = EntityState.Modified;
+
+        await _context.SaveChangesAsync();
+
+        return Ok(post);
+    }
+
+
+    [HttpGet]
+    [Route("Posts/{id}")]
+    public async Task<ActionResult<Post>> getPost(int id)
+    {
+        var item = await _context.Post.FindAsync(id);
+
+        if (item == null)
+        {
+            return NotFound();
+        }
+
+        return item;
     }
 }
 

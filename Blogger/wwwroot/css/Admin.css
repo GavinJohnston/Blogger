@@ -54,6 +54,7 @@ body {
 
 /** Main Header **/
 
+
 .panelSection {
     width: 100%;
 }
@@ -74,9 +75,11 @@ body {
 .inputArea {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     width: 30%;
     margin-right: 3%;
+    
 }
 
 .inputName {
@@ -91,6 +94,32 @@ body {
     text-transform: uppercase;
     width: 100%;
     margin: 2% 0;
+}
+
+#submitArea {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#addCat {
+    width: 80%;
+}
+
+.colorPicker {
+    width: 15%;
+    border: 2px solid rgb(11, 7, 7);
+    padding: 0;
+    margin: 2% 0;
+    cursor: pointer;
+    width: 15%;
+    height: 40px;
+}
+
+.colorPicker::-webkit-color-swatch {
+    border: none;
 }
 
 .submit {
@@ -189,6 +218,7 @@ textarea {
 .itemBox {
     background-color: rgb(11, 7, 7);
     margin: 5px;
+    
     width: 200px;
     text-align: center;
     padding: 5px;
@@ -207,6 +237,10 @@ textarea {
     flex-direction: row;
     justify-content: center;
     align-content: center;
+}
+
+.itemBoxBtn {
+    background-color: rgb(11, 7, 7, 0.3);
 }
 
 .itemBoxView,
@@ -244,11 +278,25 @@ textarea {
     display: none;
 }
 
+#modaltitles {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 #modalContentTitle {
     font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 10px;
+}
+
+#editMode {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: red;
+    display: none;
 }
 
 #modalContentArea {
@@ -260,11 +308,27 @@ textarea {
     min-height: 400px;
 }
 
-#modalContentEdit {
+#modalContentEdit,
+#modalContentSave {
     background-color: rgb(11, 7, 7);
     cursor: pointer;
     padding: 5px;
     color: ivory;
     display: inline-block;
     margin-top: 10px;
+}
+
+#login_btn {
+    background-color: rgb(11, 7, 7);
+    position: absolute;
+    color: ivory;
+    text-transform: uppercase;
+    padding: 5px;
+    position: absolute;
+    cursor: pointer;
+    right: 0;
+    top: 0;
+    border-radius: 0 0 5px 5px;
+    text-transform: capitalize;
+    text-decoration: none;
 }

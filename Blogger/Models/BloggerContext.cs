@@ -1,9 +1,11 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Blogger.Models
 {
-	public class BloggerContext : DbContext
+	public class BloggerContext : IdentityDbContext<IdentityUser, IdentityRole, string>
 	{
 		public BloggerContext(DbContextOptions<BloggerContext> options) : base(options)
 		{
@@ -14,4 +16,3 @@ namespace Blogger.Models
 		public DbSet<TitleInfo> TitleInfo { get; set; }
 	}
 }
-

@@ -3,7 +3,37 @@
 displayCategories();
 viewPosts();
 
-function updateBlogTitle() {
+(async function checkTitles() {
+
+    let data = await fetch(`${uri}/Info`)
+        .then(response => response.json())
+    if (data.length < 1) {
+
+        const item = {
+            MainHeader: `Add Main Header`,
+            SubHeader: `Add Sub Header`,
+            Title: `Add Page Title`
+        }
+
+        fetch(`${uri}/Info`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(item)
+        })
+            .then(() => {
+                displayCategories();
+            })
+            .catch(error => console.error('Unable to add item.', error));
+    }
+})()
+
+async function updateBlogTitle() {
+
+    let data = await fetch(`${uri}/Info`)
+        .then(response => response.json())
 
     var formData = new FormData(document.getElementById("titlesForm"));
 
@@ -12,13 +42,13 @@ function updateBlogTitle() {
     const formValues = JSON.parse(json);
 
     const item = {
-        Id: 1,
-        MainHeader: `${formValues.headerName}`,
-        SubHeader: `${formValues.subHeaderName}`,
-        Title: `${formValues.titleName}`
+        id: `${data[0].id}`,
+        mainHeader: `${formValues.headerName}`,
+        subHeader: `${formValues.subHeaderName}`,
+        color: `${formValues.colorPickerMain}`
     }
 
-    fetch(`${uri}/Info/${item.Id}`, {
+    fetch(`${uri}/Info/${data[0].id}`, {
         method: 'PUT',
         headers: {
             'Accept': 'application/json',
@@ -27,14 +57,21 @@ function updateBlogTitle() {
         body: JSON.stringify(item)
     })
         .then(response => response.json())
-        .catch(error => console.error('Unable to update item.', error));    
+        .catch(error => console.error('Unable to update item.', error));
+
+    document.getElementById("headerName").value = "";
+    document.getElementById("subHeaderName").value = "";
 }
 
 async function createCategory() {
     const addCat = document.getElementById("addCat");
+    const colorPickerCat = document.getElementById("colorPickerCat");
+
+    console.log(colorPickerCat);
 
     const item = {
         name: `${addCat.value}`,
+        color: `${colorPickerCat.value}`,
         Binned: false
     }
 
@@ -72,6 +109,7 @@ async function getPosts() {
 async function displayCategories() {
     const BinnedList = document.getElementById("catListBinned");
     const catLists = document.getElementsByClassName("catLists");
+    const catListPost = document.getElementById("catListPosts");
 
     const data = await getCategories();
 
@@ -80,6 +118,11 @@ async function displayCategories() {
             catLists[i].removeChild(catLists[i].firstChild);
         }
     }
+
+    while (catListPost.lastChild.value !== "All") {
+        catListPost.removeChild(catListPost.lastChild);
+    }
+    
 
     while (BinnedList.firstChild) {
         BinnedList.removeChild(BinnedList.firstChild);
@@ -96,6 +139,15 @@ async function displayCategories() {
 
                 catLists[i].appendChild(node);
             }
+
+            
+
+                let node = document.createElement("option");
+                node.setAttribute("value", `${item.name}`);
+                node.innerHTML = `${item.name}`;
+
+                catListPost.appendChild(node);
+            
 
         } else {
             const node = document.createElement("option");
@@ -138,6 +190,7 @@ async function binCategory() {
     })
         .then(() => {
             displayCategories()
+            viewPosts()
         })
         .catch(error => console.error('Unable to update item.', error));
 }
@@ -173,6 +226,7 @@ async function recoverCategory() {
     })
         .then(() => {
             displayCategories()
+            viewPosts()
         })
         .catch(error => console.error('Unable to update item.', error));
 }
@@ -196,6 +250,7 @@ async function deleteCategory(id) {
     })
         .then(() => {
             displayCategories()
+            viewPosts()
         })
         .catch(error => console.error('Unable to delete item.', error));
 }
@@ -240,6 +295,9 @@ async function generatePost() {
             viewPosts();
         })
         .catch(error => console.error('Unable to add item.', error));
+
+    document.getElementById("postTitle").value = '';
+    document.getElementById("createPost").value = '';
 }
 
 async function viewPosts() {
@@ -255,33 +313,67 @@ async function viewPosts() {
     parent.innerHTML = ` `;
 
     let CategoryId;
+    let CatColor;
+    
 
-    for (let i = 0; i < categories.length; i++) {
-        if (categories[i].name == catName) {
-            CategoryId = categories[i].id;
+    if (catName !== "All") {
+
+        for (let i = 0; i < categories.length; i++) {
+            if (categories[i].name == catName) {
+                CategoryId = categories[i].id;
+                CatColor = categories[i].color;
+                
+            }
         }
-    }
 
-    posts.forEach(item => {
+        posts.forEach(item => {
 
-        if (item.categoryId == CategoryId) {
-            let itemBox = document.createElement("div");
-            itemBox.setAttribute("class", "itemBox");
-            itemBox.innerHTML =
+            if (item.categoryId == CategoryId) {
+                let itemBox = document.createElement("div");
+                itemBox.setAttribute("class", "itemBox");
+                itemBox.setAttribute("style", `background-color:${CatColor}`);
+                itemBox.innerHTML =
 
-                `
+                    `
                 <p class="itemBoxTitle">${item.title}</p>
 
                 <div class="itemBoxContainer">
-                    <div class="itemBoxView" onclick="viewContentModal(${item.id})">View</div>
-                    <div class="itemBoxDelete" onclick="deleteContentModal(${item.id})">Delete</div>
+                    <div class="itemBoxView itemBoxBtn" onclick="viewContentModal(${item.id})">View</div>
+                    <div class="itemBoxDelete itemBoxBtn" onclick="deleteContentModal(${item.id})">Delete</div>
                 </div>
                 `
 
-            parent.appendChild(itemBox);
-        }
-    })    
+                parent.appendChild(itemBox);
+            }
+        })
 
+    } else if (catName == "All") {
+
+        posts.forEach(item => {
+
+            for (let i = 0; i < categories.length; i++) {
+                if (categories[i].id == item.categoryId && categories[i].binned == false) {
+                    CatColor = categories[i].color;
+
+                    let itemBox = document.createElement("div");
+                    itemBox.setAttribute("class", "itemBox");
+                    itemBox.setAttribute("style", `background-color:${CatColor}`);
+                    itemBox.innerHTML =
+
+                        `
+                <p class="itemBoxTitle">${item.title}</p>
+
+                <div class="itemBoxContainer">
+                    <div class="itemBoxView itemBoxBtn" onclick="viewContentModal(${item.id})">View</div>
+                    <div class="itemBoxDelete itemBoxBtn" onclick="deleteContentModal(${item.id})">Delete</div>
+                </div>
+                `
+
+                    parent.appendChild(itemBox);
+                }
+            }
+        })
+    }
 }
 
 async function viewContentModal(postId) {
@@ -300,8 +392,11 @@ async function viewContentModal(postId) {
     let modleContentTitle = document.getElementById("modalContentTitle");
     let parent = document.getElementById("modalContentArea");
 
+    let modalContentSave = document.getElementById("modalContentSave");
+    modalContentSave.setAttribute("onclick", `savePost(${post.id})`);
+
     modleContentTitle.innerHTML = `${post.title}`;
-    parent.value += `${post.content}`;
+    parent.value = `${post.content}`;
 
     viewerModalBack.style.display = "block";
     viewerModal.style.display = "block";
@@ -325,3 +420,56 @@ function closeModals() {
     viewerModalBack.style.display = "none";
     viewerModal.style.display = "none";
 }
+
+function editPost() {
+    let modalContentArea = document.getElementById("modalContentArea");
+    modalContentArea.style.border = "2px solid black";
+    modalContentArea.style.cursor = "text";
+
+    let editMode = document.getElementById("editMode");
+    editMode.style.display = "inline-block";
+}
+
+async function savePost(postId) {
+
+    let posts = await getPosts();
+
+    let post;
+
+    for (let i = 0; i < posts.length; i++) {
+        if (posts[i].id == postId) {
+            post = posts[i]
+        }
+    }
+
+    let modalContentArea = document.getElementById("modalContentArea");
+    modalContentArea.style.border = "";
+    modalContentArea.style.cursor = "";
+
+    let editMode = document.getElementById("editMode");
+    editMode.style.display = "none";
+
+    let content = document.getElementById("modalContentArea").value;
+
+    let newDate = new Date().toLocaleDateString('en-US');
+
+    const item = {
+        Id: postId,
+        Title: post.title,
+        Content: content,
+        date: newDate,
+        categoryId: post.categoryId
+    }
+
+    fetch(`${uri}/posts/${postId}`, {
+        method: 'PUT',
+        headers: {
+            
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(item)
+    })
+        .then(response => console.log(response))
+        .catch(error => console.error('Unable to update item.', error)); 
+}
+
