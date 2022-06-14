@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Blogger.Models
 {
 	public class BloggerContext : IdentityDbContext<IdentityUser, IdentityRole, string>
-	{
+    {
 		public BloggerContext(DbContextOptions<BloggerContext> options) : base(options)
 		{
 		}

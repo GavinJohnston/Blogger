@@ -1,14 +1,33 @@
 ﻿<Properties StartupConfiguration="{9A5D697A-913C-4E24-9373-9E499044A24C}|Default">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Blogger PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Blogger/Program.cs">
     <Files>
-      <File FileName="Blogger/Program.cs" Line="23" Column="7" />
+      <File FileName="Blogger/Areas/Identity/Pages/Account/_ViewImports.cshtml" Line="1" Column="1" />
+      <File FileName="Blogger/Areas/Identity/Pages/Account/Login.cshtml" Line="1" Column="1" />
+      <File FileName="Blogger/Program.cs" Line="48" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Blogger" expanded="True">
-            <Node name="Blogger" expanded="True" />
+            <Node name="Blogger" expanded="True">
+              <Node name="Areas" expanded="True">
+                <Node name="Identity" expanded="True">
+                  <Node name="Pages" expanded="True">
+                    <Node name="Account" expanded="True" />
+                  </Node>
+                </Node>
+              </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
@@ -17,10 +36,5 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Blogger PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
