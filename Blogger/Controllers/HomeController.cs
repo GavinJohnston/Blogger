@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Blogger.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Blogger.Controllers;
 
@@ -24,8 +25,10 @@ public class HomeController : Controller
         return View();
     }
 
+    
     [HttpGet]
     [Route("Admin")]
+    [Authorize]
     public IActionResult Admin()
     {
         return View();
