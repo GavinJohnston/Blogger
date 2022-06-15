@@ -114,9 +114,11 @@ body {
 #blog_dash {
     width: 100%;
     height: 650px;
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
+    align-content: flex-start;
     flex-wrap: wrap;
+    gap: 15px;
 }
 
 .postItems {
@@ -126,7 +128,7 @@ body {
     color: ivory;
     display: inline-block;
     height: 300px;
-    margin: 5px;
+    
     width: 24%;
     border-radius: 5px;
     cursor: pointer;
@@ -139,10 +141,12 @@ body {
     border-radius: 5px 5px 0 0 ;
 }
 
-#titleAreaName {
+.titleAreaName {
     font-size: 18px;
     font-weight: bold;
     letter-spacing: 1.5px;
+    text-align: center;
+    font-weight: bold;
 }
 
 .titleArea {

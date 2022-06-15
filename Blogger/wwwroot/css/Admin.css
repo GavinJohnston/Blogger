@@ -188,6 +188,16 @@ textarea {
     font-size: 20px;
 }
 
+input[type="file"] {
+    display: none;
+}
+
+#inputImg {
+    cursor: pointer;
+    margin: 10px 0;
+    color: grey;
+}
+
 /** Manage Posts **/
 
 #listPosts {

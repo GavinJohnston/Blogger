@@ -70,12 +70,19 @@ async function showItem(itemId) {
                 let postItem = document.createElement("div");
                 postItem.setAttribute("class", "postItems");
                 postItem.setAttribute("onclick", `postView(${item.id})`);
-                postItem.setAttribute("style", `background-color:${catColor}`);
                 postItem.innerHTML =
                     `
-                <div class="backPic"></div>
+                <div class="postImg"></div>
+                <div class="postPreview">
                 <div class="titleArea">
-                <p id="titleAreaName">${item.title}</p>
+                <div class="postCat">Politics</div>
+                <div class="titleAreaName">Gavin Johnston</div>
+                </div>
+                <div class="descriptionBox"></div>
+                <div class="postFooter">
+                <div class="postDate"></div>
+                </div>
+                </div>
                 </div>
                 `
 
@@ -95,12 +102,19 @@ async function showItem(itemId) {
             let postItem = document.createElement("div");
             postItem.setAttribute("class", "postItems");
             postItem.setAttribute("onclick", `postView(${item.id})`);
-            postItem.setAttribute("style", `background-color:${catColor}`);
             postItem.innerHTML =
                 `
-                <div class="backPic"></div>
+                <div class="postImg"></div>
+                <div class="postPreview">
                 <div class="titleArea">
-                <p id="titleAreaName">${item.title}</p>
+                <div class="postCat">Politics</div>
+                <div class="titleAreaName">Gavin Johnston</div>
+                </div>
+                <div class="descriptionBox"></div>
+                <div class="postFooter">
+                <div class="postDate"></div>
+                </div>
+                </div>
                 </div>
                 `
 

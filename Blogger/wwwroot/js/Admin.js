@@ -259,6 +259,12 @@ async function deleteCategory(id) {
 
 async function generatePost() {
 
+    let photo = document.getElementById("file").files[0];
+
+    fetch('Image/' + encodeURIComponent(photo.name), { method: 'PUT', body: photo });
+    alert('your file has been uploaded');
+    location.reload();
+
     var formData = new FormData(document.getElementById("postContent"));
 
     var json = JSON.stringify(Object.fromEntries(formData));
