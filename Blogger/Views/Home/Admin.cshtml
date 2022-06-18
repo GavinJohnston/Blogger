@@ -15,114 +15,119 @@
         <div id="editMode">EDIT MODE</div>
     </div>
     <textarea id="modalContentArea"></textarea>
+    <div id="modalContentInputs">
+        <input type="text"
+               class="inputBox inputBox-small"
+               placeholder="Author Name"
+               id="authorNameEdit"
+               name="authorNameEdit" />
+    </div>
     <div id="modalContentEdit" onclick="editPost()">Edit Post</div>
     <div id="modalContentSave">Save Post</div>
 </div>
-
-<div id="content">
-    <header id="header">
-        <div id="header_main">
-            <div id="header_main-header" class="header_text">Admin Panel</div>
-            <a href="/" id="login_btn">Home</a>
-        </div>
-    </header>
-    <div id="contentPanel">
-        <div id="BlogInfo" class="panelSection">
-            <h2 class="sectionHeader">Blog Information</h2>
-            <form id="titlesForm" class="sectionContent" onsubmit="return false;" autocomplete="off">
-                <div class="inputArea">
-                    <h2 class="inputName">Main Header:</h2>
-                    <input type="text" class="inputBox" placeholder="Header Name" id="headerName" name="headerName" />
-                    <input type="submit" id="submitAllInfo" value="Submit All" class="submit" onclick="updateBlogTitle()" />
-                </div>
-                <div class="inputArea">
-                    <h2 class="inputName">Sub Header:</h2>
-                    <input type="text" class="inputBox" placeholder="Sub name" id="subHeaderName" name="subHeaderName" />
-                </div>
-                <div class="inputArea">
-                    <h2 class="inputName">Text Colour:</h2>
-                    
-                        <input type="color" class="colorPicker" id="colorPickerMain" name="colorPickerMain">
-                    
-                </div>
-            </form>
-        </div>
-        <div id="CategoriesManager" class="panelSection">
-            <h2 class="sectionHeader">Manage Categories</h2>
-            <div class="sectionContent">
-                <div class="inputArea">
-                    <h2 class="inputName">Add Category:</h2>
-                    <div id="submitArea">
-                        <input type="text" class="inputBox" placeholder="Category Name" id="addCat" />
-                        <input type="color" id="colorPickerCat" class="colorPicker">
-                    </div>
-                    <div id="addCatSubmit" class="submit" onclick="createCategory()">Add</div>
-                </div>
-                <div class="inputArea">
-                    <h2 class="inputName">Remove Category:</h2>
-                    <select id="binCatList"
-                            name="catList"
-                            class="inputBox catLists"
-                            placeholder="Categories"></select>
-                    <div id="hideCatSubmit" class="submit" onclick="binCategory()">Bin</div>
-                </div>
-                <div class="inputArea">
-                    <h2 class="inputName">Bin:</h2>
-                    <select id="catListBinned"
-                            name="catList"
-                            class="inputBox"
-                            placeholder="Categories"></select>
-                    <div id="btnManager">
-                        <div id="recoverCatSubmit" class="submit" onclick="recoverCategory()">Recover</div>
-                        <div id="removeCatSubmit" class="submit" onclick="deleteCategory()">Delete</div>
-                    </div>
+<div id="bodyContent">
+    <div id="menu_panel">
+        <div id="menu_header" class="menu-section">
+            <div id="menu_header-title">Control<br />Panel</div>
+            <div id="menu_header-exit">
+                <div id="exitImg">
+                    <img src="Content/Images/logout.png" id="exitImg-overlay"/>
                 </div>
             </div>
         </div>
-        <div id="CreatePost" class="panelSection">
-            <h2 class="sectionHeader">Create Post</h2>
-            <form class="sectionContent" id="postContent" onsubmit="return false;" autocomplete="off">
-                <div class="postInfo">
-                    <div class="inputAreaPost">
-                        <h2 class="inputName">Post Title:</h2>
-                        <input type="text" class="inputBox" name="postTitle" id="postTitle" placeholder="Post Title" />
-                    </div>
-                    <div class="inputAreaPost">
-                        <h2 class="inputName">Select Category:</h2>
-                        <select id="catList"
-                                name="catList"
-                                class="inputBox catLists"
-                                placeholder="Categories"></select>
-                    </div>
-                    <div class="inputAreaPost">
-                        <h2 class="inputName">Header Image:</h2>
-                        <label id="inputImg" class="inputBox">
-                            <input type="file" id="file" accept="image/*" />
-                            Select An Image
-                        </label>
-                        <button id="submitPost" class="submit" onclick="generatePost()">Submit Post</button>
-                    </div>
-                </div>
-                <div id="postBox">
-                    <div id="formatter">
-                        <h3>Format text:</h3>
-                        <h4 id="formatHeader" class="formatBtn">Header</h4>
-                        <h4 id="formatBold" class="formatBtn">Bold</h4>
-                        <h4 id="formatItalic" class="formatBtn">Italic</h4>
-                    </div>
-                    <textarea id="createPost"
-                              placeholder="Share Your Thoughts.."
-                              name="postContent">
-                    </textarea>
-                </div>
+        <div class="menu-section" onclick="changePage('BlogInfo')">Blog Info</div>
+        <div class="menu-section" onclick="changePage('ManageCat')">Manage Categories</div>
+        <div class="menu-section" onclick="changePage('CreatePosts')">Create Posts</div>
+        <div class="menu-section" onclick="changePage('ManagePosts')">Manage Posts</div>
+        <div class="menu-section" onclick="changePage('Styling')">Styling</div>
+    </div>
+    <div class="contentArea">
+    <div class="content" id="content-BlogInfo">
+        
+            <div id="content-header">Blog Info</div>
+            <form id="titlesForm"
+                  class="sectionContent"
+                  onsubmit="return false;"
+                  autocomplete="off">
+                <input type="text"
+                       class="inputBox"
+                       placeholder="Header Title"
+                       id="headerName"
+                       name="headerName" />
+                <input type="text"
+                       class="inputBox"
+                       placeholder="Sub Title"
+                       id="subHeaderName"
+                       name="subHeaderName" />
+                <input type="submit"
+                       id="submitAllInfo"
+                       value="Submit All"
+                       class="submit"
+                       onclick="updateBlogTitle()" />
             </form>
         </div>
-        <div id="CategoriesManager" class="panelSection">
-            <h2 class="sectionHeader">Manage Posts</h2>
+        <div class="content" id="content-ManageCat">
+            <div id="content-header">Manage Categories</div>
+
+            <input type="text"
+                   class="inputBox"
+                   placeholder="Category Name"
+                   id="addCat" />
+            <div id="addCatSubmit" class="submit" onclick="createCategory()">Add</div>
+            <select id="binCatList"
+                    name="catList"
+                    class="inputBox catLists"
+                    placeholder="Categories"></select>
+            <div id="hideCatSubmit" class="submit" onclick="binCategory()">Bin</div>
+            <select id="catListBinned"
+                    name="catList"
+                    class="inputBox"
+                    placeholder="Categories"></select>
+            <div id="btnManager">
+                <div id="recoverCatSubmit" class="submit" onclick="recoverCategory()">
+                    Recover
+                </div>
+                <div id="removeCatSubmit" class="submit" onclick="deleteCategory()">
+                    Delete
+                </div>
+            </div>
         </div>
-        <div class="sectionContent" id="managePostContent">
+        <div class="content" id="content-CreatePosts">
+            <div id="content-header">Create Posts</div>
+            <form class="sectionContent"
+                  id="postContent"
+                  onsubmit="return false;"
+                  autocomplete="off">
+                <input type="text"
+                       class="inputBox"
+                       name="postTitle"
+                       id="postTitle"
+                       placeholder="Post Title" />
+                <input type="text"
+                       class="inputBox"
+                       name="authorName"
+                       id="authorName"
+                       placeholder="Author Name" />
+                <select id="catList"
+                        name="catList"
+                        class="inputBox catLists"
+                        placeholder="Categories"></select>
+                <label id="inputImg" class="inputBox">
+                    <input type="file" id="file" accept="image/*" />
+                    Select An Image
+                </label>
+                <textarea id="createPost"
+                          placeholder="Share Your Thoughts.."
+                          name="postContent"></textarea>
+        
+                <button id="submitPost" class="submit" onclick="generatePost()">
+                    Submit Post
+                </button>
+            </form>
+        </div>
+        <div class="content" id="content-ManagePosts">
+            <div id="content-header">Manage Posts</div>
             <div class="postInfo">
-                <h2 class="inputName">Select Category:</h2>
                 <select id="catListPosts"
                         name="catList"
                         class="inputBox"
@@ -132,23 +137,34 @@
                 </select>
             </div>
             <div id="listPosts">
-                <h2 class="inputName">Posts:</h2>
-                <div id="postContainer"></div>
+                <div id="postContainer">
+                    <div class="itemBox">
+                        <p class="itemBoxTitle">Post title Here</p>
+
+                        <div class="itemBoxContainer">
+                            <div class="itemBoxView itemBoxBtn" onclick="viewContentModal()">
+                                View
+                            </div>
+                            <div class="itemBoxDelete itemBoxBtn" onclick="deleteContentModal()">
+                                Delete
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-
-<!-- <div id="contentPanel_Menu">
-          <div class="menu_item">Blog Information</div>
-          <div class="menu_item">Categories</div>
-          <div class="menu_item">Create Post</div>
-          <div class="menu_item">Manage Posts</div>
-          <div class="menu_item">Colour Palette</div>
         </div>
-        <div id="contentPanel_Data">a</div> -->
+        </div>
+        <!-- <div id="contentPanel_Menu">
+              <div class="menu_item">Blog Information</div>
+              <div class="menu_item">Categories</div>
+              <div class="menu_item">Create Post</div>
+              <div class="menu_item">Manage Posts</div>
+              <div class="menu_item">Colour Palette</div>
+            </div>
+            <div id="contentPanel_Data">a</div> -->
 
 
 
 
-<script src="~/js/Admin.js" asp-append-version="true"></script>
+        <script src="~/js/Admin.js" asp-append-version="true"></script>

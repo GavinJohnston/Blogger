@@ -11,7 +11,6 @@ namespace Blogger.Models
 		public int Id { get; set; }
 		public string? Name { get; set; }
 		public bool Binned { get; set; }
-		public string? Color { get; set; }
 
 		public List<Post> Post { get; set; }
 	}

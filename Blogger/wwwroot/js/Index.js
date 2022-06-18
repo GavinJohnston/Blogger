@@ -16,8 +16,6 @@ showItem("All");
         document.getElementById("header_main-sub").innerHTML = `${data[0].subHeader}`;
 
         let mainHeader = document.getElementById("header_main");
-        mainHeader.setAttribute("style", `color:${data[0].color};`);
-        
     }
 })();
 
@@ -31,7 +29,6 @@ showItem("All");
     data.forEach(item => {
         let catItem = document.createElement("div");
         catItem.setAttribute("class", "menu_item");
-        catItem.setAttribute("style", `background-color:${item.color}`);
         catItem.setAttribute("onclick", `showItem(${item.id})`);
         
         catItem.innerHTML = `${item.name}`;
@@ -53,13 +50,13 @@ async function showItem(itemId) {
     parent.style.flexDirection = "row";
     parent.innerHTML = ``;
 
-    let catColor;
+    let CategoryName
 
     if (itemId !== "All") {
 
         for (let i = 0; i < categories.length; i++) {
             if (categories[i].id == itemId) {
-                catColor = categories[i].color;
+                CategoryName = categories[i].name;
             }
         }
 
@@ -74,15 +71,14 @@ async function showItem(itemId) {
                     `
                 <div class="postImg"></div>
                 <div class="postPreview">
-                <div class="titleArea">
-                <div class="postCat">Politics</div>
-                <div class="titleAreaName">Gavin Johnston</div>
+                <div class="prevHeader">
+                   <div class="postCat">${CategoryName}</div>
                 </div>
-                <div class="descriptionBox"></div>
-                <div class="postFooter">
-                <div class="postDate"></div>
+                <div class="prevContent">
+                    <div class="titleAreaName">${item.title}</div>
+                    <div class="descriptionBox">Bacon ipsum dolor amet landjaeger picanha ham hock tenderloin pastrami spare ribs boudin.</div>
                 </div>
-                </div>
+                <div class="postDate">${item.date.split('T')[0].split('-').reverse().join('/')}</div>
                 </div>
                 `
 
@@ -95,7 +91,7 @@ async function showItem(itemId) {
 
             for (let i = 0; i < categories.length; i++) {
                 if (categories[i].id == item.categoryId) {
-                    catColor = categories[i].color;
+                    CategoryName = categories[i].name;
                 }
             }
 
@@ -106,15 +102,14 @@ async function showItem(itemId) {
                 `
                 <div class="postImg"></div>
                 <div class="postPreview">
-                <div class="titleArea">
-                <div class="postCat">Politics</div>
-                <div class="titleAreaName">Gavin Johnston</div>
+                <div class="prevHeader">
+                   <div class="postCat">${CategoryName}</div>
                 </div>
-                <div class="descriptionBox"></div>
-                <div class="postFooter">
-                <div class="postDate"></div>
+                <div class="prevContent">
+                    <div class="titleAreaName">${item.title}</div>
+                    <div class="descriptionBox">Bacon ipsum dolor amet landjaeger picanha ham hock tenderloin pastrami spare ribs boudin.</div>
                 </div>
-                </div>
+                <div class="postDate">${item.date.split('T')[0].split('-').reverse().join('/')}</div>
                 </div>
                 `
 

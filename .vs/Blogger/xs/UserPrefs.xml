@@ -1,34 +1,24 @@
 ﻿<Properties StartupConfiguration="{9A5D697A-913C-4E24-9373-9E499044A24C}|Default">
-  <MonoDevelop.Ide.ItemProperties.Blogger PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Blogger/wwwroot/css/Index.css">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Blogger/wwwroot/js/Admin.js">
     <Files>
-      <File FileName="Blogger/wwwroot/css/Index.css" Line="39" Column="1" />
-      <File FileName="Blogger/Views/Home/Index.cshtml" Line="31" Column="7" />
-      <File FileName="Blogger/wwwroot/js/Index.js" Line="110" Column="2" />
+      <File FileName="Blogger/Views/Home/Admin.cshtml" Line="129" Column="32" />
+      <File FileName="Blogger/wwwroot/js/Admin.js" Line="476" Column="26" />
+      <File FileName="Blogger/wwwroot/css/Admin.css" Line="389" Column="23" />
+      <File FileName="Blogger/Models/Post.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Blogger" expanded="True">
             <Node name="Blogger" expanded="True">
-              <Node name="Areas" expanded="True">
-                <Node name="Identity" expanded="True">
-                  <Node name="Pages" expanded="True">
-                    <Node name="Account" expanded="True" />
-                  </Node>
-                </Node>
-              </Node>
+              <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True">
-                  <Node name="Index.css" selected="True" />
-                </Node>
+                <Node name="css" expanded="True" />
                 <Node name="js" expanded="True" />
               </Node>
               <Node name="appsettings.json" expanded="True" />
@@ -41,6 +31,9 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Blogger PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

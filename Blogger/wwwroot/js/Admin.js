@@ -41,8 +41,11 @@ async function updateBlogTitle() {
 
     const formValues = JSON.parse(json);
 
+    console.log(formValues)
+
     const item = {
         id: `${data[0].id}`,
+        fullName: `${formValues.firstName} ${formValues.secondName}`,
         mainHeader: `${formValues.headerName}`,
         subHeader: `${formValues.subHeaderName}`,
         color: `${formValues.colorPickerMain}`
@@ -65,13 +68,10 @@ async function updateBlogTitle() {
 
 async function createCategory() {
     const addCat = document.getElementById("addCat");
-    const colorPickerCat = document.getElementById("colorPickerCat");
-
-    console.log(colorPickerCat);
+    
 
     const item = {
         name: `${addCat.value}`,
-        color: `${colorPickerCat.value}`,
         Binned: false
     }
 
@@ -110,6 +110,7 @@ async function displayCategories() {
     const BinnedList = document.getElementById("catListBinned");
     const catLists = document.getElementsByClassName("catLists");
     const catListPost = document.getElementById("catListPosts");
+    const catListPostEdit = document.getElementById("catListPostEdit");
 
     const data = await getCategories();
 
@@ -146,7 +147,8 @@ async function displayCategories() {
                 node.setAttribute("value", `${item.name}`);
                 node.innerHTML = `${item.name}`;
 
-                catListPost.appendChild(node);
+            catListPost.appendChild(node);
+            //catListPostEdit.appendChild(node);
             
 
         } else {
@@ -259,11 +261,11 @@ async function deleteCategory(id) {
 
 async function generatePost() {
 
-    let photo = document.getElementById("file").files[0];
+    //let photo = document.getElementById("file").files[0];
 
-    fetch('Image/' + encodeURIComponent(photo.name), { method: 'PUT', body: photo });
-    alert('your file has been uploaded');
-    location.reload();
+    //fetch('Image/' + encodeURIComponent(photo.name), { method: 'PUT', body: photo });
+    //alert('your file has been uploaded');
+    //location.reload();
 
     var formData = new FormData(document.getElementById("postContent"));
 
@@ -286,6 +288,7 @@ async function generatePost() {
     const item = {
         Title: `${formValues.postTitle}`,
         Content: `${formValues.postContent}`,
+        FullName: `${formValues.authorName}`,
         CategoryId: categoryId,
     }
 
@@ -304,6 +307,7 @@ async function generatePost() {
 
     document.getElementById("postTitle").value = '';
     document.getElementById("createPost").value = '';
+    document.getElementById("authorName").value = '';
 }
 
 async function viewPosts() {
@@ -337,7 +341,6 @@ async function viewPosts() {
             if (item.categoryId == CategoryId) {
                 let itemBox = document.createElement("div");
                 itemBox.setAttribute("class", "itemBox");
-                itemBox.setAttribute("style", `background-color:${CatColor}`);
                 itemBox.innerHTML =
 
                     `
@@ -363,7 +366,6 @@ async function viewPosts() {
 
                     let itemBox = document.createElement("div");
                     itemBox.setAttribute("class", "itemBox");
-                    itemBox.setAttribute("style", `background-color:${CatColor}`);
                     itemBox.innerHTML =
 
                         `
@@ -393,15 +395,19 @@ async function viewContentModal(postId) {
         }
     }
 
+    console.log(post)
+
     let viewerModalBack = document.getElementById("viewerModalBack");
     let viewerModal = document.getElementById("viewerModal");
     let modleContentTitle = document.getElementById("modalContentTitle");
     let parent = document.getElementById("modalContentArea");
+    let author = document.getElementById("authorNameEdit");
 
     let modalContentSave = document.getElementById("modalContentSave");
     modalContentSave.setAttribute("onclick", `savePost(${post.id})`);
 
     modleContentTitle.innerHTML = `${post.title}`;
+    author.value = `${post.fullName}`;
     parent.value = `${post.content}`;
 
     viewerModalBack.style.display = "block";
@@ -429,9 +435,11 @@ function closeModals() {
 
 function editPost() {
     let modalContentArea = document.getElementById("modalContentArea");
-    modalContentArea.style.border = "2px solid black";
+    let author = document.getElementById("authorNameEdit");
+    
     modalContentArea.style.cursor = "text";
-
+    author.style.border = "2px solid #4f5d75ff";
+    modalContentArea.style.border = "2px solid #4f5d75ff";
     let editMode = document.getElementById("editMode");
     editMode.style.display = "inline-block";
 }
@@ -449,6 +457,8 @@ async function savePost(postId) {
     }
 
     let modalContentArea = document.getElementById("modalContentArea");
+    let author = document.getElementById("authorNameEdit");
+    author.style.border = "";
     modalContentArea.style.border = "";
     modalContentArea.style.cursor = "";
 
@@ -463,6 +473,7 @@ async function savePost(postId) {
         Id: postId,
         Title: post.title,
         Content: content,
+        FullName: author,
         date: newDate,
         categoryId: post.categoryId
     }
@@ -479,3 +490,9 @@ async function savePost(postId) {
         .catch(error => console.error('Unable to update item.', error)); 
 }
 
+function changePage(page) {
+
+    let section = document.getElementById(`content-${page}`);
+
+    section.scrollIntoView({ behavior: "smooth" });
+}

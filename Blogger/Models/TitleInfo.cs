@@ -6,6 +6,5 @@ namespace Blogger.Models
 		public int Id { get; set; }
 		public string? MainHeader { get; set; }
 		public string? SubHeader { get; set; }
-		public string? Color { get; set; }
-	}
+    }
 }
